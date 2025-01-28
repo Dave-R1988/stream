@@ -3,11 +3,14 @@ from pydantic import BaseModel
 import psutil
 from typing import List
 
+
 app = FastAPI()
+
 
 class CPU_Usage(BaseModel):
     cpu: str
     percent: float
+
 
 @app.get("/cpu_percent")
 async def cpu_percent() -> List[CPU_Usage]:
@@ -19,6 +22,5 @@ async def cpu_percent() -> List[CPU_Usage]:
     """
     cpu_usage = psutil.cpu_percent(interval=1, percpu=True)
     # return a list of CPU_Usage objects
-    return [CPU_Usage(cpu=f"CPU{idx}", percent=usage) for idx, usage in enumerate(cpu_usage)]
-
-# -------------------------------------------------------------------------
+    return [CPU_Usage(cpu=f"CPU{idx}", percent=usage)
+            for idx, usage in enumerate(cpu_usage)]
