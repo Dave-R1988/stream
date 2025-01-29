@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  resource-service:
+    build:
+      context: ./service
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+  producer:
+    build:
+      context: ./producer
+    depends_on:
+      - resource-service
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

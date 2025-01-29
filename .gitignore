@@ -51,6 +51,9 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# output files:
+*.out
+
 # Translations
 *.mo
 *.pot

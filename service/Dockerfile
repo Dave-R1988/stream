@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Install fastapi, psutil, pydantic with specific versions
+RUN pip install --no-cache-dir fastapi==0.115.7 psutil==6.1.1 pydantic==2.10.6 fastapi-cli==0.0.7
 
 # Expose port 8000 for the FastAPI app
 EXPOSE 8000
